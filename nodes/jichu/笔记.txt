@@ -1,0 +1,48 @@
+模块化：
+
+
+// require  引入模块
+//module 模块
+//exports 输出/出口
+
+
+npm:NodeJs包管理器
+统一下载依赖：
+
+ 
+
+首先把文件modules放在node_modules文件夹里面
+module.exports = {
+    a : 12,
+    b : 3,
+    c : 5
+}
+
+然后在1.js文件里面使用
+
+require(文件名)        可以无后缀名
+
+require先从系统模块里面找，然后再从node_modules文件夹里面找
+
+导入文件
+npm : myamp
+
+
+
+
+
+
+
+
+
+
+
+1.系统模块：http,querystring,url
+
+2.自定义模块：
+
+3.包管理器：
+
+系统模块：
+
+断言：帮助测试,

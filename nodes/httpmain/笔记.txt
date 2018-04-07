@@ -1,0 +1,12 @@
+服务器搭建：
+
+    知识点：http/fs/get/post
+
+    用户注册，登录
+
+
+    1.定义接口
+
+    /user?act=reg&user=aaa&pass=123
+
+    {{'ok':false,'msg':'原因'}}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="../jquery.min.js" ></script>
+</head>
+<body>
+    用户:
+    <input type="text" id="user" >
+    密码：
+    <input type="password" id="pass" >
+    <input type="button" value="注册" id="reg_btn" >
+    <input type="button" value="登录" id="lobBtn" >
+    <script>
+        var oTxtUser = $('#user');
+        var oTxtPass = $('#pass')
+        var regBtn = $('#reg_btn')
+        var logBtn = $('#lobBtn')
+        regBtn.on('click',function(){
+            alax({
+                url : '/user',
+                data :{
+                    act : 'reg',
+                    user : oTxtUser.value(),
+                    pass : oTxtPass.value(),
+                },
+                type : 'get',
+                success : function(str) {
+                    var json = eval(`str`)
+                    if(json.ok){
+                        alert('ok')
+                    }else{
+                        alert('no')
+                    }
+                }
+
+            })
+        })
+    </script>
+</body>
+</html>

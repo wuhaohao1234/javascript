@@ -1,0 +1,12 @@
+数据请求：
+前台：form,ajax,jsonp
+
+后台:处理数据形式相同
+
+前台  --- 后台  走的是http协议
+
+
+get 数据在url
+
+
+post 数据不在url
