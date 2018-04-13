@@ -1,7 +1,0 @@
-GET数据：
-
-    req.url -----------urlLib.parse(地址,true)
-POST数据：
-    
-
-    数据比get数据容量大，安全性好
