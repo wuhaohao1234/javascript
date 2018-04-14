@@ -1,0 +1,79 @@
+express --> 是别人写的
+
+
+原生js  -->  jq
+
+node -->  express
+
+const express = require('express')
+
+const server = express()  //创建服务器
+
+server.listen(8787)     //监听
+
+server.get('二级地址',function(req,res){
+    console.log('有人get了')
+})
+
+引号里面写入的是二级地址，只有初始地址 + 二级地址才可以访问到
+
+http://localhost:8787/index.html
+
+server.post('',function(req,res){
+    console.log('有人post了')
+})
+
+
+server.use('',function(req,res){
+    console.log('有人get或post了')
+})
+
+
+use不管是get还是post都通吃
+
+
+如果是get数据：
+
+req.query  帮助解析，直接用
+
+如果是post数据：
+
+插件body-parser
+
+中间件：可以传递数据
+
+server.use('',function(req,res,next){
+    console.log('我是user1')
+    req.les = 10
+    next()
+})
+
+server.use('',function(req,res){
+    console.log('我是user2')
+    console.log(req.les)
+    res.end()
+})
+
+插件：body-parser
+
+    server.use(bodyParser.urlencoded({}))
+
+    server.use('',function(req,res){
+        console.log(req.body)
+    })
+
+复习：
+
+    server = express() 创建服务器
+
+    server.use(bodyParser.urlencoded({}))
+
+    server.use('地址',function(req,res,next){
+        res.send(req.body)
+        next()
+    })
+
+
+第二课:
+
+    
