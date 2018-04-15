@@ -1,0 +1,13 @@
+require() 入口
+
+exports.名字 = xx
+
+module.exports = {
+
+}
+
+npm     node   pack   manager
+
+软件包管理器
+
+npm 里面有所有人的安装包

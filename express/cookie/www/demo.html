@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <style>
+        .block{
+            display:inline-block;
+            font-size:20px;
+            text-shadow:1px solid #ccc;
+        }
+        div{
+            margin-top:30px;
+        }
+        .mary{
+            margin-right:20px;
+        }
+    </style>
+</head>
+<body>
+    <span class="block" >用户：</span><input class="input-group-text" type="text">
+    <span class="block" >密码：</span><input class="input-group-text" type="password">
+    <div>
+        <input id="c" class="btn btn-primary mary" type="button" value="登录" >
+        <input type="checkbox">自动登录
+    </div>
+    <script src="./jquery.min.js" ></script>
+    <script>
+        $('#c').on('click',function(){
+            $.ajax({
+                url : 'http://localhost:8585/leo',
+                success : function(data) {
+                    $('input').eq(0).val(data.user)
+                    $('input').eq(1).val(data.pass)
+                }
+            })
+        })
+    </script>
+</body>
+</html>

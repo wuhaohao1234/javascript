@@ -1,0 +1,6 @@
+writeFile(名字，内容，callback)
+
+readFile('./'+名字,callback)
+
+
+url模块，http模块，fs模块querystring

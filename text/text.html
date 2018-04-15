@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #topNode{
+            width:100%;
+            height:30px;
+            border-bottom:1px solid #000;
+            box-shadow:0 0 10px #ccc;
+            background:#ccc;
+        }
+        #topNode > button{
+            float:left;
+            padding:3px;
+            margin-left:30px;
+            background:#fff;
+        }
+        #loginNode{
+            width:200px;
+            height:300px;
+            border:1px solid #000;
+            position: absolute;
+            left:0;
+            top:0;
+            right:0;
+            text-align:center;
+            font-size:20px;
+            color:darkturquoise;
+            z-index:4;
+            bottom:0;
+            margin:auto;
+            padding-top:30px;
+            background:#666;
+            /* display:none; */
+        }
+        #cl{
+            position: absolute;
+            right:10px;
+            top:10px;
+        }
+        #NodeCh{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            background:rgba(0, 0, 0, .3);
+            z-index:3;
+            display:none;
+        }
+        #loginNode > input{
+            height:30px;
+            display:inline-block;
+            margin-left:10px;        
+        }
+        #btn{
+            width:120px;
+            height:50px;
+            background:deepskyblue;
+            display: inline-block;
+            margin-top:30px;
+            border-radius: 10px;
+            border:0;
+            font-size:25px;
+            cursor:pointer;
+        }
+        #btn:hover{
+            background:#12d612;
+        }
+        #login{
+            width:120px;
+            height:50px;
+            background:deepskyblue;
+            display: inline-block;
+            margin-top:30px;
+            border-radius: 10px;
+            border:0;
+            font-size:25px;
+            cursor:pointer;
+        }
+        #login:hover{
+            background:#12d612;
+        }
+    </style>
+</head>
+<body>
+    <div id="NodeCh">
+
+    </div>
+    <div id="topNode">
+        <button id="dl" >登录</button>
+        <button id="zc" >注册</button>
+    </div>
+    <div id="loginNode" style="display:none;" >
+        <button id="cl" >x</button>
+        用户: <input type="text" id="user" ><br>
+        密码: <input type="password" id="pass" ><br>
+        <button id="btn" >注册</button>
+        <button id="login" >登录</button>
+        <button id="btnText" >读取</button>
+    </div>
+    <div id="inHtml" >
+
+    </div>
+    <ul id="ul" >
+
+    </ul>
+    <script src="jquery.min.js" ></script>
+    <script>
+        dl.onclick = zc.onclick = function() {
+            loginNode.style.display = 'block';
+            NodeCh.style.display = 'block';
+        }
+        cl.onclick = function() {
+            loginNode.style.display = 'none';
+            NodeCh.style.display = 'none';
+        }
+        btn.onclick = function() {
+            if(user.value == '' && pass.value == ''){
+                alert('密码与账号不能为空')
+                return ;
+            }
+            $.ajax({
+                url : 'http://localhost:8585',
+                type : 'get',
+                data : {
+                    'user' : user.value,
+                    'pass' : pass.value
+                },
+                success : function(data) {
+                    inHtml.innerHTML = data;
+                    console.log(data)
+                }
+            })
+        }
+        login.onclick = function () {
+                $.ajax({
+                    url: 'http://localhost:8787',
+                    type: 'get',
+                    data: {
+                        'user': user.value,
+                        'pass': pass.value
+                    },
+                    success: function (data) {
+                        inHtml.innerHTML = data;
+                        console.log(data)
+                        if(data == '登录成功'){
+                            setTimeout(function(){
+                                topNode.style.display = 'none'
+                                loginNode.style.display = 'none'
+                                inHtml.style.display = 'none'
+                                NodeCh.innerHTML =  user.value + `
+                                    <input id="btnText" type="button" value="写入文章"><br>
+                                    标题:<input type="text" id="header" ><br>
+                                    内容:<textarea id="content" ></textarea>
+                                    <ul>
+                                        <li></li>    
+                                    </ul>
+                                `
+                            },1000)
+                        }
+                    }
+                })
+            }
+            btnText.onclick = function() {
+                $.ajax({
+                    url: 'http://localhost:9999',
+                    type: 'get',
+                    data: {
+                        'user': header.value,
+                        'pass': content.value
+                    },
+                    success: function (data) {
+                        console.log(data)
+                    }
+                })                
+            }
+    </script>
+</body>
+</html>

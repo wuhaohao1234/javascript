@@ -1,0 +1,26 @@
+cookie:本地临时存储
+
+大小：4kb
+
+优势：全部兼容
+
+        记录浏览痕迹，
+
+服务端给客户端种了一个cookie
+
+服务端：可以给前台cookie
+
+设置：res.cookie(key,value,{
+    path : '/aaa',       地址
+    maxAge : 过期时间
+})
+
+拿取
+通过cookie-parser
+
+
+server.use(cookieParser())
+req.cookies
+
+
+2018-08-21T02:14:02.553Z

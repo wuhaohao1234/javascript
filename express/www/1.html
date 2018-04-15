@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        访问www下面的1.html
+    </div>
+    <script src="../jquery.min.js"></script>
+    <script>
+        $.ajax({
+            url: 'http://localhost:8787',
+            type: 'post',
+            data: {
+                user: 'leo',
+                pass: '123'
+            },
+            success: function (data) {
+                alert(data)
+            }
+        })
+    </script>
+</body>
+</html>
