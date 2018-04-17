@@ -84,3 +84,43 @@ Mysql创建数据库的方法：
     7、查看自己的表
 
     SELECT * FROM network;
+
+
+
+
+
+
+
+
+    pool.getConnection(function (err, connection) {
+    if (err) {
+        console.log('no')
+    } else {
+            console.log('ok')
+            connection.query('INSERT INTO network (`id`, `use`, `pass`) VALUES("3", "wang2", "789")', function (err, data) {
+                if (err) {
+                    console.log(err)
+                } else {
+                    console.log(data)
+                    
+                    connection.end()
+                }
+            })
+        }
+    })
+
+
+where  字句 有的话更加精准
+
+
+select 所有值 (更精准的值) 查多个字段用逗号隔开 from `表` where `use`='wuhao';
+
+delete from `network`  千万不要用，一旦用了就扯淡了
+
+delete from `network` where `use`='zhao'
+
+改：update:更新
+
+update `network` set `use`='sky',`pass`='789'  千万别用，一用就彻底完事
+
+update `network` set `use`='xiaomin',`pass`='110' where `use`='sse'
