@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>吴昊昊的个人主页</title>
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .login {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .rain{
+            background:rgba(0, 0, 0,.9);
+            display:block;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+       <canvas class="rain"></canvas>
+    </div>
+    <script>
+            var canvas = document.getElementsByClassName('rain')[0],
+                w,
+                h,
+                canCon,
+                x = 100,
+                y = 0;
+            (function setSize() {
+                window.onresize = arguments.callee
+                w = window.innerWidth
+                h = window.innerHeight
+                canvas.width = w
+                canvas.height = h
+            })()
+         
+            canCon = canvas.getContext('2d')
+            var aRain = []
+            function Rain() {
+
+            }
+            function random(min,max){
+                return Math.random() * (max - min) + min
+            }
+            Rain.prototype = {
+                init : function() {
+                    this.x = random(0,w)
+                    this.y = 0
+                    this.vY = random(4,5)
+                    this.h = random(0.8*h,0.9*h)
+                    this.r = 1
+                    this.vr = 1
+                    this.maxr = random(45,60)
+                },
+                draw : function () {
+                    if(this.y < this.h){
+                        canCon.beginPath()
+                        canCon.fillStyle = '#31f7f7'
+                        canCon.fillRect(this.x, this.y, 3, 5)
+                    }else{
+                        canCon.beginPath()
+                        canCon.strokeStyle = '#31f7f7'
+                        canCon.arc(this.x,this.y,this.r,0, Math.PI *180)
+                        canCon.stroke()
+                    }
+                },
+                move : function() {
+                    if(this.y < this.h){
+                        this.y += this.vY;
+                    }else{
+                        if(this.r < this.maxr){
+                            this.r += this.vr;
+                        }else{
+                            this.init()
+                        }
+                    }
+                    this.draw()
+                }
+            }
+            function createRain(num){
+                for (var i = 0; i < num; i++) {
+                    setTimeout(function(){
+                        var rain = new Rain()
+                        rain.init()
+                        rain.draw()
+                        aRain.push(rain)
+                    },200*i)
+                }
+            }
+            createRain(60)
+            setInterval(function(){
+                canCon.fillStyle = 'rgba(0,0,0,0.05)'
+                canCon.fillRect(0, 0, w, h)
+                for(var item of aRain){
+                    item.move()
+                }
+            },30)
+    </script>
+</body>
+
+</html>

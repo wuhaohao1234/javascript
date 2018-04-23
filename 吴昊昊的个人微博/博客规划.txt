@@ -1,0 +1,70 @@
+第一界面：
+
+    登录界面
+
+第二界面：
+
+    包含：技术文章，学习笔记，生活感悟
+
+    主体：个人介绍，作品，个人简历
+
+第三界面：
+
+    娱乐界面：贪吃蛇游戏，俄罗斯方块，还有一个类似1994小游戏的战略游戏
+
+    程序员能力：
+
+      1:语言的掌握   30%
+      2:项目思维     70% 
+
+
+   window.onresize = arguments.callee 
+  当页面大小改变的时候就调用函数本身，用的是arguments.callee这个属性
+
+  canvas:笔记
+
+    矩形：  canCon.fillStyle = '#f00'填充所有颜色
+            canCon.rect(0,0,100,100)
+            canCon.fill()
+
+        fill画的是实心
+
+            canCon.strokeStyle = '#f00'
+            canCon.rect(0,0,100,100)
+            canCon.stroke()
+
+        stroke画的不是实心
+
+        画圆
+
+        canCon.arc(100,100,100,0,Math.PI*180)
+
+        擦除
+
+        canCon.beginPath()
+        canCon.clearRect(0, 0, w, h)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
