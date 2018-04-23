@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+</head>
+<body>
+    <h2>课时补充</h2>
+    <p>
+        转义字符 :  \
+    </p>
+    <div>
+        var str = 'abcd\'efg'<br>
+        var str = 'abcd\'\nefg':换行<br>
+        正常情况：一个回车：\r\n <br>
+        \t一个tab建   <br>
+        \r行间数<br>
+        \i忽视大小写<br>
+        \g全局匹配<br>
+        var reg = /abc/i<br>  
+        var str = 'aBcd'<br>
+        console.log(reg.test(str)) //true <br>
+    </div>
+    <div>
+        \i忽视大小写<br> 
+        \g全局匹配<br>
+        \m多行匹配<br>
+        <hr>
+        var reg = /ab/g <br>
+        var str = 'abaabababababababab'<br>
+        console.log(str.match(reg)) <br>
+        <hr>
+        var reg = /^a/g; <br>
+        var str = 'abcda'<br>
+        console.log(str.match(reg)) //返回值只有一个a<br>
+        <hr>
+        var reg = /^a/gm;//多行匹配<br>
+        var str = 'abcfdkslfjd\nafjdlkjfsldkfj'<br>
+        console.log(str.match(reg))//返回值为2个a <br>
+        <hr>
+        <div style="color:red;" >
+            reg.test(str) 只能判断str里面是否含有正则表达式里面的规则:返回值是true或false <br>  
+            str.match(reg) 可以把str里面符合正则表达式的规则里面的字符返回出来<br>
+        </div>
+        <hr>
+        <div style="color:#f00;" >
+            表达式：[],一个[]是一位,[]里面的是区间<br>
+            var reg = /[1234567890][1234567890][134567890]/g <br>
+        </div>
+        var str = '123fsjd4654lk564564j' <br>
+        console.log(str.match(reg))  //返回值：["123", "465", "564", "564"] <br>
+        <hr>
+        var reg = /[ab][cd][d]/g;<br>
+        var str = 'abcd'<br>
+        console.log(str.match(reg))//bcd匹配<br>
+        <hr>
+        var reg = /[0-9A-z][cd][d]/g <br>
+        var str = 'abdsfdsfdsfdsfcd' <br>
+        console.log(str.match(reg)) <br>
+        <hr>
+        <div style="color:#f00;" >
+             var reg = /[^a][^b][^c]/g//[^]代表的是非
+            <br>
+        </div>
+        var str = 'abcddskfjlksd'   <br>
+        console.log(str.match(reg)) <br>
+        <br>
+        <hr>
+        <div style="color:#f00;" >
+            var reg = /(abc|bcd)/g //匹配abc或bcd <br>
+            var str = 'abcbcd'  <br>
+            console.log(str.match(reg)) <br>
+        </div>
+        <hr>
+        <div style="color:#f00" >
+            元字符与表达式类似
+            \w:单词字符   <br>
+            \w === [0-9A-z] <br>
+            \W === [^\w] <br>
+            <hr>
+            var reg = /\wcd2/g <br>
+            var str = 'bcd21'   <br>
+            console.log(str.match(reg)) <br>
+            <hr>
+            <div style="color:#ff0;" >
+                可以在表达式里面写元字符<br>
+                \w  [0-9A-z]    <br>
+                \d数字 [0-9]     <br>
+                \s  [\t\n\r\v\f] 空白字符 <br>
+                \b   单词边界  <br>
+                . === [^\r\n]
+                <hr>
+                var str = 'abc def ghi' <br>
+                var reg = /c\b/g    <br>
+                console.log(str.match(reg)) //true <br>
+                <hr>
+            </div>
+            <div style="background:#ccc;" >
+
+            </div>
+        </div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>
